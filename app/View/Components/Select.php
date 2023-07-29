@@ -12,8 +12,8 @@ class Select extends Component
    * Create the component instance.
    */
   public function __construct(
-    public string $name,
-    public Collection $options
+    public Collection $options,
+    public int $selected
   ) {
   }
 
