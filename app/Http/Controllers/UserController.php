@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
 
@@ -30,5 +33,37 @@ class UserController extends Controller
         return view('user.create', [
             'roles' => Role::all(),
         ]);
+    }
+
+    //
+    /**
+     * Show user edit form
+     */
+    public function edit(User $user): View
+    {
+        return view('user.edit', [
+            'user' => $user,
+            'roles' => Role::all()
+        ]);
+    }
+
+    public function update(UserUpdateRequest $request, User $user): RedirectResponse
+    {
+        $user->fill($request->validated());
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+
+
+        $prevRole = $user->getRoles()[0];
+        $newRole = Role::firstWhere('id', $request->role);
+        $user->removeRole($prevRole->name);
+        $user->assignRole($newRole->name);
+        $user->save();
+
+
+        return Redirect::route('users.edit', ['user' => $user])->with('status', 'user-updated');
     }
 }
