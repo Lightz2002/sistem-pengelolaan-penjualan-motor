@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -46,11 +47,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    /**
-     * Get the role associated with the user.
-     */
-    public function role(): HasOne
+    public function getRoles()
     {
-        return $this->hasOne(Role::class, 'role', 'id');
+        return $this->roles->pluck('name')->toArray();
     }
 }
