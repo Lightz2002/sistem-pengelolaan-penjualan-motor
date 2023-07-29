@@ -19,14 +19,15 @@
                         @php $lowerCaseHeader = strtolower($header); @endphp
                         <td class="p-3 border-b border-slate-200">
                             @if ($lowerCaseHeader === 'role')
-                                {{ count($row->getRoles()) > 0 ? $row->getRoles()[0] : '' }}
+                                {{ count($row->getRoles()) > 0 ? $row->getRoles()[0]->name : '' }}
                             @else
                                 {{ $row->{$lowerCaseHeader} }}
                             @endif
                         </td>
                     @endforeach
                     <td class="p-3 border-b border-slate-200 inline-flex align-items-center">
-                        <a href="" class="inline-flex me-4 border border-blue-400 text-blue-400 px-4 py-2 text-xs">
+                        <a href={{ "/users/{$row->id}/edit" }}
+                            class="inline-flex me-4 border border-blue-400 text-blue-400 px-4 py-2 text-xs">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-4 h-4 stroke-blue-400 me-1">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -34,7 +35,7 @@
                             </svg>
                             <span>Edit</span>
                         </a>
-                        <a href=""
+                        <a href={{ "/users/{$row->id}/destroy" }}
                             class="inline-flex me-4 border border-red-400 text-red-400  px-4 py-2 text-xs">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-4 h-4 stroke-red-400 me-1">
