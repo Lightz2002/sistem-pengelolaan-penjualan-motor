@@ -15,6 +15,20 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if(auth()->check())
+                        @if(auth()->user()->hasRole('admin'))
+                            @include('partials.admin-menu')
+                        @elseif(auth()->user()->hasRole('surveyor'))
+                            @include('partials.surveyor-menu')
+                        @elseif(auth()->user()->hasRole('admin data'))
+                            @include('partials.admin-data-menu')
+                        @elseif(auth()->user()->hasRole('cashier'))
+                            @include('partials.cashier-menu')
+                        @elseif(auth()->user()->hasRole('vendor'))
+                            @include('partials.vendor-menu')
+                        @endif
+                    @endif
                 </div>
             </div>
 
