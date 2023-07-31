@@ -20,7 +20,7 @@ class UserController extends Controller
     public function list(Request $request): View
     {
         return view('user.list', [
-            'users' => User::paginate(2),
+            'users' => User::filter($request->query())->paginate(3)->withQueryString(),
             'headers' => ['Username', 'Email', 'Role'],
         ]);
     }
@@ -56,9 +56,7 @@ class UserController extends Controller
             $user->email_verified_at = null;
         }
 
-
-
-        $prevRole = $user->getRoles()[0];
+        $prevRole = $user->roles[0];
         $newRole = Role::firstWhere('id', $request->role);
         $user->removeRole($prevRole->name);
         $user->assignRole($newRole->name);
@@ -79,7 +77,7 @@ class UserController extends Controller
     public function destroy(User $user): RedirectResponse
     {
         $loggedInUser = Auth::user();
-        if (!$loggedInUser->getRoles()[0]->hasPermissionTo('manage user')) {
+        if (!$loggedInUser->roles[0]->hasPermissionTo('manage user')) {
             return Redirect::to('/users')->with('status', 'permission-disallowed');
         }
 
