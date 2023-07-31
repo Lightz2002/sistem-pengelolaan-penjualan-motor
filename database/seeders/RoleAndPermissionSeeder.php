@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class RoleAndPermissionSeeder extends Seeder
@@ -19,5 +20,9 @@ class RoleAndPermissionSeeder extends Seeder
     $adminDataRole = Role::create(['name' => 'admin data']);
     $adminRole = Role::create(['name' => 'admin']);
     $vendorRole = Role::create(['name' => 'vendor']);
+
+    $manageUser = Permission::create(['name' => 'manage user']);
+
+    $vendorRole->syncPermissions($manageUser);
   }
 }
