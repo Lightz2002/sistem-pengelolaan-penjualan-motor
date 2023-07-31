@@ -6,6 +6,7 @@ use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
@@ -65,5 +66,25 @@ class UserController extends Controller
 
 
         return Redirect::route('users.edit', ['user' => $user])->with('status', 'user-updated');
+    }
+
+
+    public function delete(User $user): View
+    {
+        return view('user.delete', [
+            'user' => $user
+        ]);
+    }
+
+    public function destroy(User $user): RedirectResponse
+    {
+        $loggedInUser = Auth::user();
+        if (!$loggedInUser->getRoles()[0]->hasPermissionTo('manage user')) {
+            return Redirect::to('/users')->with('status', 'permission-disallowed');
+        }
+
+        $user->delete();
+
+        return Redirect::to('/users')->with('status', 'user-deleted');
     }
 }
