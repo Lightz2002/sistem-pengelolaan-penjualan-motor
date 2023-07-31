@@ -19,7 +19,7 @@
                         @php $lowerCaseHeader = strtolower($header); @endphp
                         <td class="p-3 border-b border-slate-200">
                             @if ($lowerCaseHeader === 'role')
-                                {{ count($row->getRoles()) > 0 ? $row->getRoles()[0]->name : '' }}
+                                {{ count($row->roles) > 0 ? $row->roles[0]->name : '' }}
                             @else
                                 {{ $row->{$lowerCaseHeader} }}
                             @endif

@@ -25,7 +25,7 @@
 
         <div>
             <x-input-label for="role" :value="__('Role')" />
-            <x-select name="role" :options="$roles" :selected="count($user->getRoles()) ? $user->getRoles()[0]->id : $roles[0]->id" class="w-full" />
+            <x-select name="role" :options="$roles" :selected="count($user->roles) ? $user->roles[0]->id : $roles[0]->id" class="w-full" />
             <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
 
