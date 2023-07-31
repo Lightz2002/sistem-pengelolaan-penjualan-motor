@@ -35,7 +35,7 @@
                             </svg>
                             <span>Edit</span>
                         </a>
-                        <a href={{ "/users/{$row->id}/destroy" }}
+                        <a href={{ "/users/{$row->id}/delete" }}
                             class="inline-flex me-4 border border-red-400 text-red-400  px-4 py-2 text-xs">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-4 h-4 stroke-red-400 me-1">
