@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Spatie\Permission\Models\Role;
@@ -50,6 +51,6 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect('/users');
+        return Redirect::to('/users')->with('status', 'user-created');
     }
 }
