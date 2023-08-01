@@ -36,9 +36,3 @@
 
     </div>
 </x-app-layout>
-
-<script>
-    const data = @json($users);
-    const headers = @json($headers);
-    const route = '/users';
-</script>
