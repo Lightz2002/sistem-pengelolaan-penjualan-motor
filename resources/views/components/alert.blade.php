@@ -42,12 +42,14 @@
     
 @endphp
 
-<div
-    class="alert py-1 flex items-center rounded-md text-sm px-4 ml-auto text-{{ $alert->color }}-800 bg-{{ $alert->bgColor }}-100">
-    {!! $alert->icon !!}
+@if (session('status') === 'user-created' || session('status') === 'user-deleted')
+    <div
+        class="alert py-1 flex items-center rounded-md text-sm px-4 ml-auto text-{{ $alert->color }}-800 bg-{{ $alert->bgColor }}-100">
+        {!! $alert->icon !!}
 
-    {{ $slot }}
-</div>
+        {{ $slot }}
+    </div>
+@endif
 
 <script>
     const alert = document.querySelector('.alert');
