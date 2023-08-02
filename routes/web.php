@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SalesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::get('/users/{user}/delete', [UserController::class, 'delete'])->name('users.delete');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+    Route::get('/sales/createAdminData', [SalesController::class, 'createAdminDataSales'])->name('sales.createAdminDataSales');
+    Route::post('/sales/storeAdminData', [SalesController::class, 'storeAdminDataSales'])->name('sales.storeAdminDataSales');
 });
 
 require __DIR__ . '/auth.php';
