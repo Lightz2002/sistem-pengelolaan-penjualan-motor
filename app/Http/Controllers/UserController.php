@@ -19,10 +19,7 @@ class UserController extends Controller
      */
     public function list(Request $request): View
     {
-        return view('user.list', [
-            'users' => User::filter($request->query())->paginate(3)->withQueryString(),
-            'headers' => ['Username', 'Email', 'Role'],
-        ]);
+        return view('user.list');
     }
 
     //
