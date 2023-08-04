@@ -21,6 +21,7 @@ class Sales extends Model
         'updated_at'
     ];
 
+    /* Mutators and Casts */
     /**
      * The attributes that should be cast.
      *
@@ -30,6 +31,13 @@ class Sales extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    protected function salesStatus(): Attribute
+    {
+        return Attribute::make(
+            get: fn (string $value) => strtoupper($value),
+        );
+    }
 
     protected function salesType(): Attribute
     {
