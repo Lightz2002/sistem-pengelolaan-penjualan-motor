@@ -13,6 +13,7 @@ class SalesService
     $sales = new Sales();
     $sales->fill($adminDataSalesRequest->validated());
     $sales->sales_status = 'pending';
+    $sales->sales_code = $sales->generateSalesCode();
     $sales->save();
   }
 
