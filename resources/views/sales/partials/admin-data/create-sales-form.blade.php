@@ -36,23 +36,22 @@
                 </div>
 
                 <div class="mb-4">
-                    <x-input-label for="installment_type" :value="__('Installment Type')" class="mb-2" />
+                    <x-input-label for="sales_type" :value="__('Installment Type')" class="mb-2" />
 
                     <div class="flex">
-                        <x-text-input id="motor_installment" name="installment_type" type="radio"
-                            class="mt-1 me-1 block" autocomplete="motor_installment" value="Motor Installment"
-                            :checked="old('installment_type', $defaultInstallmentType) === 'Motor Installment'" />
+                        <x-text-input id="motor_installment" name="sales_type" type="radio" class="mt-1 me-1 block"
+                            autocomplete="motor_installment" value="Motor Installment" :checked="old('sales_type', $defaultInstallmentType) === 'Motor Installment'" />
 
                         <x-input-label for="motor_installment" :value="__('Motor Installment')" />
                     </div>
 
                     <div class="flex">
-                        <x-text-input id="reinstallment" name="installment_type" type="radio" class="mt-1 me-1 block"
-                            autocomplete="reinstallment" value="Reinstallment" :checked="old('installment_type', $defaultInstallmentType) === 'Reinstallment'" />
+                        <x-text-input id="reinstallment" name="sales_type" type="radio" class="mt-1 me-1 block"
+                            autocomplete="reinstallment" value="Reinstallment" :checked="old('sales_type', $defaultInstallmentType) === 'Reinstallment'" />
                         <x-input-label for="reinstallment" :value="__('Reinstallment')" />
                     </div>
 
-                    <x-input-error :messages="$errors->get('installment_type')" class="mt-2" />
+                    <x-input-error :messages="$errors->get('sales_type')" class="mt-2" />
                 </div>
             </section>
         </div>
@@ -108,7 +107,7 @@
             </section>
         </div>
         <div class="mt-6 flex justify-end">
-            <x-secondary-button type="redirect" href="/users">
+            <x-secondary-button type="redirect" href="/customers">
                 {{ __('Cancel') }}
             </x-secondary-button>
 

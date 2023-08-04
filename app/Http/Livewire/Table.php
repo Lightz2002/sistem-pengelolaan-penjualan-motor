@@ -12,7 +12,9 @@ abstract class Table extends Component
 
     public $perPage = 2;
     public $search = '';
+    public $createUrl = '';
     protected $queryString = ['search'];
+
 
     public $page = 1;
     public abstract function query(): \Illuminate\Database\Eloquent\Builder;

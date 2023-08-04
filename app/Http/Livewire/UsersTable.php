@@ -5,10 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use App\View\Components\Column;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\View\View;
 
 
 class UsersTable extends Table
