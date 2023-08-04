@@ -38,7 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
 
-    Route::get('/customers', [SalesController::class, 'showCustomers'])->name('customers');
+    Route::get('/customers', [SalesController::class, 'indexCustomers'])->name('customers');
+    Route::get('/customers/{sales}', [SalesController::class, 'showCustomers'])->name('customers.show');
 
 
     Route::get('/customers/createAdminData', [SalesController::class, 'createAdminDataSales'])->name('sales.createAdminDataSales');

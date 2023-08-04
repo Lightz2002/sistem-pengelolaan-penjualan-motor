@@ -39,11 +39,10 @@ class SalesController extends Controller
         ]);
     }
 
-    public function showCustomers()
+    public function indexCustomers()
     {
         return view('sales.list-customer');
     }
-
 
 
     /**
@@ -59,9 +58,9 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Sales $sales)
+    public function showCustomers(Sales $sales)
     {
-        //
+        return view('sales.show-customer', ['sales' => $sales]);
     }
 
     /**
