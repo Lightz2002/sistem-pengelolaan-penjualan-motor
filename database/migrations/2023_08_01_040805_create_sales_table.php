@@ -15,6 +15,7 @@ return new class extends Migration
     Schema::create('sales', function (Blueprint $table) {
       $table->bigIncrements('id');
       $table->string('sales_code', 20)->nullable(true);
+      $table->boolean('sales_is_deleted')->default(false);
       $table->string('sales_status', 10)->nullable(true);
       $table->string('customer_name', 50)->nullable(true);
       $table->string('customer_surname', 20)->nullable(true);
@@ -42,7 +43,7 @@ return new class extends Migration
       $table->string('motor_right_photo', 50)->nullable(true);
       $table->string('motor_left_photo', 50)->nullable(true);
       $table->decimal('motor_administration_fee', 10, 2)->default(150000);
-      $table->string('installment_type', 12)->nullable(true);
+      $table->string('sales_type', 20)->nullable(true);
       $table->foreignIdFor(Dealer::class, 'dealer_id')->nullable(true);
       $table->string('guarantor_name', 50)->nullable(true);
       $table->string('guarantor_relationship', 20)->nullable(true);

@@ -3,9 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Edit User') }}
         </h2>
-        @if (session('status') === 'user-updated')
-            <x-alert type="success">Data Updated Successfully</x-alert>
-        @endif
+        <x-alert type="success"></x-alert>
     </x-slot>
 
     <div class="py-12">
@@ -18,3 +16,4 @@
         </div>
     </div>
 </x-app-layout>
+
