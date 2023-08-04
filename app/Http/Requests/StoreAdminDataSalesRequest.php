@@ -24,6 +24,7 @@ class StoreAdminDataSalesRequest extends FormRequest
       'motor_plate_number' => ['string'],
       'motor_price' => ['numeric'],
       'dealer_id' => ['exists:dealers,id'],
+      'sales_type' => ['required']
     ];
   }
 }
