@@ -10,11 +10,14 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
-                <h1 class="mb-6 text-4xl font-bold">{{ $sales->customer_name }}</h1>
+                <h1 class="mb-6 text-2xl font-bold">{{ $sales->customer_name }}</h1>
 
                 @include('sales.partials.admin-data.show-customer-table')
             </div>
         </div>
 
+        @include('sales.partials.admin-data.show-customer-sales-history')
+
     </div>
 </x-app-layout>
+
