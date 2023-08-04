@@ -4,7 +4,7 @@
             {{ __('User') }}
         </h2>
 
-        <x-alert type="success">Data Updated Successfully</x-alert>
+        <x-alert type="success"></x-alert>
     </x-slot>
 
     {{-- @include('partials.list-table') --}}
