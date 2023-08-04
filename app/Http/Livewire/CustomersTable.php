@@ -25,6 +25,7 @@ class CustomersTable extends Table
             Column::make('customer_name', 'Name'),
             Column::make('customer_full_address', 'Address'),
             Column::make('motor_plate_number', 'Plate Number'),
+            Column::make('created_at', 'Created At')->component('columns.common.human-diff'),
             Column::make('action', 'Actions')->component('columns.customers.action')
         ];
     }
