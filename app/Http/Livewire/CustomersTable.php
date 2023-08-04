@@ -24,7 +24,8 @@ class CustomersTable extends Table
             Column::make('sales_code', 'Sales Code'),
             Column::make('customer_name', 'Name'),
             Column::make('customer_full_address', 'Address'),
-            Column::make('motor_plate_number', 'Plate Number')
+            Column::make('motor_plate_number', 'Plate Number'),
+            Column::make('action', 'Actions')->component('columns.customers.action')
         ];
     }
 }
