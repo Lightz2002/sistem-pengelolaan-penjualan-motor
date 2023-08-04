@@ -1,7 +1,7 @@
 @php
     $alert = (object) [
-        'bgColor' => 'green',
-        'color' => 'green',
+        'bgColor' => 'bg-green-100',
+        'color' => 'text-green-800',
         'icon' => '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 me-2">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>
@@ -10,8 +10,8 @@
     
     switch (strtolower($type)) {
         case 'info':
-            $alert->bgColor = 'blue';
-            $alert->color = 'blue';
+            $alert->bgColor = 'bg-blue-100';
+            $alert->color = 'text-blue-800';
             $alert->icon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
       stroke="currentColor" class="w-6 h-6 me-2">
       <path stroke-linecap="round" stroke-linejoin="round"
@@ -19,8 +19,8 @@
           </svg>';
             break;
         case 'error':
-            $alert->bgColor = 'red';
-            $alert->color = 'red';
+            $alert->bgColor = 'text-red-100';
+            $alert->color = 'bg-red-800';
             $alert->icon = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
       stroke="currentColor" class="w-6 h-6 me-2">
       <path stroke-linecap="round" stroke-linejoin="round"
@@ -44,7 +44,7 @@
 
 @if (session()->has('message'))
     <div
-        class="alert py-1 flex items-center rounded-md text-sm px-4 ml-auto text-{{ $alert->color }}-800 bg-{{ $alert->bgColor }}-100">
+        class="alert py-1 flex items-center rounded-md text-sm px-4 ml-auto {{ $alert->color . ' ' . $alert->bgColor }}">
         {!! $alert->icon !!}
 
         {{ session('message') }}
