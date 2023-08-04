@@ -12,6 +12,9 @@ class UsersTable extends Table
     public $search = '';
     protected $queryString = ['search'];
 
+    public $createUrl = '/users/create';
+
+
     public function query(): Builder
     {
         return User::filter($this->search);
