@@ -42,12 +42,12 @@
     
 @endphp
 
-@if (session('status') === 'user-created' || session('status') === 'user-deleted')
+@if (session()->has('message'))
     <div
         class="alert py-1 flex items-center rounded-md text-sm px-4 ml-auto text-{{ $alert->color }}-800 bg-{{ $alert->bgColor }}-100">
         {!! $alert->icon !!}
 
-        {{ $slot }}
+        {{ session('message') }}
     </div>
 @endif
 
@@ -58,3 +58,4 @@
     }, 2000);
     console.log('1');
 </script>
+

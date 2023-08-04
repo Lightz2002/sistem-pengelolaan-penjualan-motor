@@ -41,11 +41,7 @@ class SalesController extends Controller
 
     public function showCustomers()
     {
-        return view('sales.list-customer', [
-            'headers' => ['Sales Code', 'Name', 'Address', 'Plate Number'],
-            'properties' => ['sales_code', 'customer_name', 'customer_full_address', 'customer_plate_number'],
-            'datas' => Sales::all()
-        ]);
+        return view('sales.list-customer');
     }
 
 
@@ -56,7 +52,8 @@ class SalesController extends Controller
     public function storeAdminDataSales(StoreAdminDataSalesRequest $request): RedirectResponse
     {
         $this->salesService->saveAdminDataSales($request);
-        return Redirect::to('/sales/createAdminData');
+        session()->flash('message', 'Customer Added Successfully');
+        return Redirect::to('/customers');
     }
 
     /**

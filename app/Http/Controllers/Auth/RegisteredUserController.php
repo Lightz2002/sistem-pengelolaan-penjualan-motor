@@ -50,7 +50,7 @@ class RegisteredUserController extends Controller
         $user->save();
 
         event(new Registered($user));
-
-        return Redirect::to('/users')->with('status', 'user-created');
+        session()->flash('message', 'User Created Successfully');
+        return Redirect::to('/users');
     }
 }

@@ -59,8 +59,8 @@ class UserController extends Controller
         $user->assignRole($newRole->name);
         $user->save();
 
-
-        return Redirect::route('users.edit', ['user' => $user])->with('status', 'user-updated');
+        session()->flash('message', 'User Updated Successfully');
+        return Redirect::route('users.edit', ['user' => $user]);
     }
 
 
@@ -75,11 +75,12 @@ class UserController extends Controller
     {
         $loggedInUser = Auth::user();
         if (!$loggedInUser->roles[0]->hasPermissionTo('manage user')) {
-            return Redirect::to('/users')->with('status', 'permission-disallowed');
+            session()->flash('message', 'Permission Disallowed');
+            return Redirect::to('/users');
         }
 
         $user->delete();
-
-        return Redirect::to('/users')->with('status', 'user-deleted');
+        session()->flash('message', 'User Deleted Successfully');
+        return Redirect::to('/users');
     }
 }
