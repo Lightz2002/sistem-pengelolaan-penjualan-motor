@@ -10,18 +10,19 @@ abstract class Table extends Component
 {
     use WithPagination;
 
+    public $page = 1;
     public $perPage = 2;
     public $search = '';
     public $createUrl = '';
-    protected $queryString = ['search'];
+
+    protected $queryString = [
+        'search' => ['except' => ''],
+        'page' => ['except' => 1],
+    ];
 
     public $sortBy = 'created_at';
-
     public $sortDirection = 'desc';
 
-
-
-    public $page = 1;
     public abstract function query(): \Illuminate\Database\Eloquent\Builder;
     public abstract function columns(): array;
 

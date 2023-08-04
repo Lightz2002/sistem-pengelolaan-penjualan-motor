@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Builder;
 class UsersTable extends Table
 {
     public $search = '';
-    protected $queryString = ['search'];
 
     public $createUrl = '/users/create';
 
