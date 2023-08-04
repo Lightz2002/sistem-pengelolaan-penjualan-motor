@@ -8,6 +8,6 @@
     ];
 @endphp
 
-<div class="px-4 py-1 border text-center text-sm w-28 font-bold rounded-full {{ $chipStyle[$value] }}">
+<div class="px-4 py-1 border text-center text-xs w-28 font-bold rounded-full {{ $chipStyle[$value] }}">
     {{ $value }}
 </div>
