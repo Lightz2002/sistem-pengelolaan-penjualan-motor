@@ -49,7 +49,8 @@ class Sales extends Model
     {
         return $query->where('customer_name', 'like', '%' . $search . '%')
             ->orWhere('customer_full_address', 'like', '%' . $search . '%')
-            ->orWhere('motor_plate_number', 'like', '%' . $search . '%');
+            ->orWhere('motor_plate_number', 'like', '%' . $search . '%')
+            ->orWhere('sales_code', 'like', '%' . $search . '%');
     }
 
     /* Essential methods */
