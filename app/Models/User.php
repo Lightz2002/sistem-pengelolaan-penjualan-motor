@@ -57,12 +57,10 @@ class User extends Authenticatable
 
     public function scopeFilter($query, string $search)
     {
-        // $query->when($filters['search'] ?? false, function ($query, $search) {
         return $query->where('username', 'like', '%' . $search . '%')
             ->orWhere('email', 'like', '%' . $search . '%')
             ->orWhereHas('roles', function ($query) use ($search) {
                 return $query->where('name', $search);
             });
-        // });
     }
 }
