@@ -10,7 +10,12 @@ class CustomersTable extends Table
 {
     public $search = '';
 
-    public $createUrl = '/customers/createAdminData';
+    public $createUrl = '';
+
+    public function mount()
+    {
+        $this->createUrl = $this->getCreateUrl();
+    }
 
     public function query(): Builder
     {
@@ -26,7 +31,20 @@ class CustomersTable extends Table
             Column::make('motor_plate_number', 'Plate Number'),
             Column::make('sales_status', 'Status')->component('columns.customers.status'),
             Column::make('created_at', 'Created At')->component('columns.common.human-diff'),
-            Column::make('action', 'Actions')->component('columns.customers.action')
+            Column::make('action', 'Actions')->component($this->getActionColumn())
         ];
+    }
+
+    private function getCreateUrl()
+    {
+
+        if (auth()->user()->hasRole('surveyor')) return '';
+        return '/customers/createAdminData';
+    }
+
+    private function getActionColumn()
+    {
+        if (auth()->user()->hasRole('surveyor')) return 'columns.customers.surveyor-action';
+        return 'columns.customers.action';
     }
 }
