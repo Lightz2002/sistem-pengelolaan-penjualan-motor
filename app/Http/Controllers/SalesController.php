@@ -58,7 +58,7 @@ class SalesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showCustomers(Sales $sales)
+    public function showCustomer(Sales $sales)
     {
         return view('sales.show-customer', ['sales' => $sales]);
     }
@@ -66,9 +66,14 @@ class SalesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Sales $sales)
+    public function editCustomer(Sales $sales)
     {
-        //
+        return view('sales.edit-customer', [
+            'sales' => $sales,
+            'dealers' => Dealer::all(),
+            'defaultInstallmentType' => 'Motor Installment'
+
+        ]);
     }
 
     /**

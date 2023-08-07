@@ -39,7 +39,8 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/customers', [SalesController::class, 'indexCustomers'])->name('customers');
-    Route::get('/customers/{sales}', [SalesController::class, 'showCustomers'])->name('customers.show');
+    Route::get('/customers/{sales}', [SalesController::class, 'showCustomer'])->name('customers.show');
+    Route::get('/customers/{sales}/edit', [SalesController::class, 'editCustomer'])->name('customers.edit');
 
 
     Route::get('/customers/createAdminData', [SalesController::class, 'createAdminDataSales'])->name('sales.createAdminDataSales');

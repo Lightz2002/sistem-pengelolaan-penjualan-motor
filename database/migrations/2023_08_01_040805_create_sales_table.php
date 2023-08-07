@@ -18,8 +18,9 @@ return new class extends Migration
       $table->boolean('sales_is_deleted')->default(false);
       $table->string('sales_status', 10)->nullable(true);
       $table->string('customer_name', 50)->nullable(true);
-      $table->string('customer_surname', 20)->nullable(true);
+      $table->string('customer_nickname', 20)->nullable(true);
       $table->smallInteger('customer_age')->nullable(true);
+      $table->smallInteger('customer_dependents')->nullable(true);
       $table->string('customer_gender', 1)->nullable(true);
       $table->string('customer_status', 12)->nullable(true);
       $table->bigInteger('customer_identity_card_no')->nullable(true);
