@@ -5,7 +5,9 @@
     <textarea
         {{ $attributes->except('type')->merge([
             'class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm',
-        ]) }}></textarea>
+        ]) }}>
+        {{ $slot }}    
+    </textarea>
 @elseif ($type === 'radio')
     <input {{ $disabled ? 'disabled' : '' }} {{ $checked ? 'checked' : '' }} {!! $attributes->merge([
         'class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm',

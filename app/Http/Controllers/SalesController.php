@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAdminDataSalesRequest;
 use App\Models\Sales;
-use App\Http\Requests\StoreSalesRequest;
+use App\Http\Requests\StoreSurveyorSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
 use App\Models\Dealer;
 use App\Services\SalesService;
@@ -54,6 +54,27 @@ class SalesController extends Controller
         session()->flash('message', 'Customer Added Successfully');
         return Redirect::to('/customers');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeSurveyorSales(StoreSurveyorSalesRequest $request, Sales $sales): RedirectResponse
+    {
+        $this->salesService->saveSurveyorSales($request, $sales);
+        session()->flash('message', 'Customer Edited Successfully');
+        return Redirect::to('/customers');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function rejectSurveyorSales(Sales $sales): RedirectResponse
+    {
+        $this->salesService->rejectSurveyorSales($sales);
+        session()->flash('message', 'Customer Edited Successfully');
+        return Redirect::to('/customers');
+    }
+
 
     /**
      * Display the specified resource.

@@ -39,10 +39,10 @@ return new class extends Migration
       $table->string('motor_plate_number', 10)->nullable(true);
       $table->decimal('motor_dp', 10, 2)->nullable(true);
       $table->decimal('motor_price', 10, 2)->nullable(true);
-      $table->string('motor_front_photo', 50)->nullable(true);
-      $table->string('motor_back_photo', 50)->nullable(true);
-      $table->string('motor_right_photo', 50)->nullable(true);
-      $table->string('motor_left_photo', 50)->nullable(true);
+      $table->string('motor_front_photo', 80)->nullable(true);
+      $table->string('motor_back_photo', 80)->nullable(true);
+      $table->string('motor_right_photo', 80)->nullable(true);
+      $table->string('motor_left_photo', 80)->nullable(true);
       $table->decimal('motor_administration_fee', 10, 2)->default(150000);
       $table->string('sales_type', 20)->nullable(true);
       $table->foreignIdFor(Dealer::class, 'dealer_id')->nullable(true);
@@ -53,7 +53,7 @@ return new class extends Migration
       $table->bigInteger('guarantor_identity_no')->nullable(true);
       $table->string('guarantor_occupation', 50)->nullable(true);
       $table->longText('guarantor_workplace_address')->nullable(true);
-      $table->string('house_photo', 50)->nullable(true);
+      $table->string('house_photo', 80)->nullable(true);
       $table->timestamps();
     });
   }

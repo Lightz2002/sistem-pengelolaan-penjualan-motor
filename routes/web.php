@@ -37,14 +37,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}/delete', [UserController::class, 'delete'])->name('users.delete');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
-
     Route::get('/customers', [SalesController::class, 'indexCustomers'])->name('customers');
     Route::get('/customers/{sales}', [SalesController::class, 'showCustomer'])->name('customers.show');
     Route::get('/customers/{sales}/edit', [SalesController::class, 'editCustomer'])->name('customers.edit');
 
-
     Route::get('/customers/createAdminData', [SalesController::class, 'createAdminDataSales'])->name('sales.createAdminDataSales');
     Route::post('/customers/storeAdminData', [SalesController::class, 'storeAdminDataSales'])->name('sales.storeAdminDataSales');
+
+    Route::put('/customers/storeSurveyor/{sales}', [SalesController::class, 'storeSurveyorSales'])->name('sales.storeSurveyorSales');
+    Route::put('/customers/rejectSurveyor/{sales}', [SalesController::class, 'rejectSurveyorSales'])->name('sales.rejectSurveyorSales');
 });
 
 require __DIR__ . '/auth.php';

@@ -15,7 +15,7 @@ class StoreSurveyorSalesRequest extends FormRequest
   {
     return [
       'customer_name' => ['string', 'max:50', 'required'],
-      'customer_surname' => ['string', 'max:20', 'required'],
+      'customer_nickname' => ['string', 'max:20', 'required'],
       'customer_age' => ['numeric', 'required'],
       'customer_gender' => ['string', 'required'],
       'customer_phone_no' => ['string', 'required'],
@@ -25,22 +25,22 @@ class StoreSurveyorSalesRequest extends FormRequest
       'customer_workplace_name' => ['string'],
       'customer_workplace_address' => ['string'],
       'customer_workplace_position' => ['string'],
-      'customer_fix_income' => ['decimal:10,2', 'required'],
-      'customer_additional_income' => ['decimal:10,2'],
-      'customer_fix_expense' => ['decimal:10,2', 'required'],
-      'customer_additional_expense' => ['decimal:10,2'],
-      'guarantor_name' => ['string'],
-      'guarantor_relationship' => ['string'],
-      'guarantor_phone_no' => ['string'],
-      'guarantor_full_address' => ['string'],
-      'guarantor_occupation' => ['string'],
-      'guarantor_workplace_address' => ['string'],
-      'motor_right_photo' => ['string', 'max:512'],
-      'motor_left_photo' => ['string', 'max:512'],
-      'motor_front_photo' => ['string', 'max:512'],
-      'motor_back_photo' => ['string', 'max:512'],
-      'house_photo' => ['string', 'max:512'],
-      'customer_photo' => ['string', 'max:512']
+      'customer_fix_income' => ['numeric', 'required'],
+      'customer_additional_income' => ['numeric', 'nullable'],
+      'customer_fix_expense' => ['numeric', 'required'],
+      'customer_additional_expense' => ['numeric', 'nullable'],
+      'guarantor_name' => ['string', 'required'],
+      'guarantor_relationship' => ['string', 'required'],
+      'guarantor_phone_no' => ['string', 'required'],
+      'guarantor_full_address' => ['string', 'required'],
+      'guarantor_occupation' => ['string', 'required'],
+      'guarantor_workplace_address' => ['string', 'required'],
+      'motor_right_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
+      'motor_left_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
+      'motor_front_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
+      'motor_back_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
+      'house_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
+      'customer_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512']
     ];
   }
 }
