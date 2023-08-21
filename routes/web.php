@@ -46,6 +46,9 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/customers/storeSurveyor/{sales}', [SalesController::class, 'storeSurveyorSales'])->name('sales.storeSurveyorSales');
     Route::put('/customers/rejectSurveyor/{sales}', [SalesController::class, 'rejectSurveyorSales'])->name('sales.rejectSurveyorSales');
+
+    Route::get('/sales', [SalesController::class, 'listCreditSales'])->name('sales.listCreditSales');
+    Route::get('/sales/{sales}/editCreditData', [SalesController::class, 'editCreditSales'])->name('sales.editCreditSales');
 });
 
 require __DIR__ . '/auth.php';

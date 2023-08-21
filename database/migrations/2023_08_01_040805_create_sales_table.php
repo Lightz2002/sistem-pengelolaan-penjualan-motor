@@ -37,6 +37,7 @@ return new class extends Migration
       $table->string('customer_photo', 50)->nullable(true);
       $table->string('motor_type', 20)->nullable(true);
       $table->string('motor_plate_number', 10)->nullable(true);
+      $table->foreignIdFor(User::class, 'sales_surveyor')->nullable(true);
       $table->decimal('motor_dp', 10, 2)->nullable(true);
       $table->decimal('motor_price', 10, 2)->nullable(true);
       $table->string('motor_front_photo', 80)->nullable(true);

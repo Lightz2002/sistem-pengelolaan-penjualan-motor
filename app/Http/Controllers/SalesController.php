@@ -98,6 +98,28 @@ class SalesController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     */
+    public function listCreditSales()
+    {
+        return view('sales.list-credit', [
+            'dealers' => Dealer::all(),
+            'defaultInstallmentType' => 'Motor Installment'
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function createCreditSales(Sales $sales)
+    {
+        return view('sales.edit-credit-data', [
+            'dealers' => Dealer::all(),
+            'defaultInstallmentType' => 'Motor Installment'
+        ]);
+    }
+
+    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateSalesRequest $request, Sales $sales)
