@@ -26,6 +26,7 @@ class CreditSalesTable extends Table
     {
         return [
             Column::make('sales_code', 'Sales Code'),
+            Column::make('sales_date', 'Date'),
             Column::make('customer_name', 'Name'),
             Column::make('motor_plate_number', 'Plate Number'),
             Column::make('dealer.name', 'Dealer'),

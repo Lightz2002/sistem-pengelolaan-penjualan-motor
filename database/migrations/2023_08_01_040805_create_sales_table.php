@@ -15,6 +15,7 @@ return new class extends Migration
     Schema::create('sales', function (Blueprint $table) {
       $table->bigIncrements('id');
       $table->string('sales_code', 20)->nullable(true);
+      $table->date('sales_date')->nullable(true);
       $table->boolean('sales_is_deleted')->default(false);
       $table->string('sales_status', 10)->nullable(true);
       $table->string('customer_name', 50)->nullable(true);
