@@ -54,7 +54,6 @@ return new class extends Migration
       $table->string('motor_left_photo', 80)->nullable(true);
       $table->decimal('motor_administration_fee', 10, 2)->default(150000);
       $table->decimal('motor_installment_amount', 10, 2)->default(0);
-      $table->decimal('motor_commission_fee', 10, 2)->default(0);
       $table->string('sales_type', 20)->nullable(true);
       $table->foreignIdFor(Dealer::class, 'dealer_id')->nullable(true);
       $table->string('guarantor_name', 50)->nullable(true);

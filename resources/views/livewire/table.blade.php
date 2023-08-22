@@ -58,7 +58,7 @@
                         @foreach ($this->columns() as $column)
                             <td class="p-3 border-b cursor-pointer border-slate-200">
                                 {{-- <div class="py-3 px-6 flex items-center cursor-pointer"> --}}
-                                <x-dynamic-component :id="$row['id']" :component="$column->component" :value="$row[$column->key]">
+                                <x-dynamic-component :id="$row['id']" :component="$column->component" :value="$row[$column->key]" :row="$row">
                                 </x-dynamic-component>
                                 {{-- </div> --}}
                             </td>

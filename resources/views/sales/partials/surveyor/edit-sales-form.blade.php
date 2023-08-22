@@ -271,7 +271,7 @@
 
         <div class="mt-6 flex justify-end">
             <x-secondary-button type="redirect" href="/customers">
-                {{ __('Cancel') }}
+                {{ __('Back') }}
             </x-secondary-button>
 
             <x-primary-button class="ml-3">

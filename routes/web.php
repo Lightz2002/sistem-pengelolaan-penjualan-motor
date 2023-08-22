@@ -44,11 +44,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers/createAdminData', [SalesController::class, 'createAdminDataSales'])->name('sales.createAdminDataSales');
     Route::post('/customers/storeAdminData', [SalesController::class, 'storeAdminDataSales'])->name('sales.storeAdminDataSales');
 
+    Route::post('/customers/{sales}/status', [SalesController::class, 'updateStatus'])->name('sales.updateStatus');
     Route::put('/customers/storeSurveyor/{sales}', [SalesController::class, 'storeSurveyorSales'])->name('sales.storeSurveyorSales');
     Route::put('/customers/rejectSurveyor/{sales}', [SalesController::class, 'rejectSurveyorSales'])->name('sales.rejectSurveyorSales');
 
     Route::get('/sales', [SalesController::class, 'listCreditSales'])->name('sales.listCreditSales');
     Route::get('/sales/{sales}/editCreditData', [SalesController::class, 'editCreditSales'])->name('sales.editCreditSales');
+    Route::put('/sales/{sales}/updateCreditSales', [SalesController::class, 'updateCreditSales'])->name('sales.updateCreditSales');
 });
 
 require __DIR__ . '/auth.php';

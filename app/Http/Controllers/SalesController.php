@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAdminDataSalesRequest;
+use App\Http\Requests\UpdateCreditSalesRequest;
 use App\Models\Sales;
 use App\Http\Requests\StoreSurveyorSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
 use App\Models\Dealer;
 use App\Services\SalesService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 
@@ -76,6 +78,15 @@ class SalesController extends Controller
     }
 
 
+    public function updateStatus(Sales $sales): JsonResponse
+    {
+        $this->salesService->updateStatus($sales);
+        return response()->json([
+            'message' => "Customer data " . request()->sales_status . " !"
+        ]);
+    }
+
+
     /**
      * Display the specified resource.
      */
@@ -118,6 +129,13 @@ class SalesController extends Controller
             'defaultInstallmentType' => 'Motor Installment',
             'sales' => $sales
         ]);
+    }
+
+    public function updateCreditSales(UpdateCreditSalesRequest $request, Sales $sales): RedirectResponse
+    {
+        $this->salesService->updateCreditSales($request, $sales);
+        session()->flash('message', 'Customer Edited Successfully');
+        return Redirect::to('/sales');
     }
 
     /**

@@ -1,4 +1,4 @@
-<form method="post" action="{{ route('sales.storeSurveyorSales', ['sales' => $sales->id]) }}" class="p-6 grid grid-cols-2"
+<form method="post" action="{{ route('sales.updateCreditSales', ['sales' => $sales->id]) }}" class="p-6 grid grid-cols-2"
 enctype="multipart/form-data">
 @csrf
 @method('put')
@@ -127,14 +127,6 @@ enctype="multipart/form-data">
                 <x-input-error :messages="$errors->get('motor_engine_number')" class="mt-2" />
             </div>
 
-            {{-- Engine Number --}}
-            <div class="mb-4">
-                <x-input-label for="motor_engine_number" :value="__('Engine Number')" />
-                <x-text-input id="motor_engine_number" name="motor_engine_number" type="text"
-                    class="mt-1 block w-full" :value="old('motor_engine_number', $sales->motor_engine_number)" />
-                <x-input-error :messages="$errors->get('motor_engine_number')" class="mt-2" />
-            </div>
-
             {{-- Assemble Year --}}
             <div class="mb-4">
                 <x-input-label for="motor_assemble_year" :value="__('Assemble Year')" />
@@ -167,14 +159,14 @@ enctype="multipart/form-data">
         <div class="mb-4">
             <x-input-label for="motor_price" :value="__('Price')" />
             <x-text-input id="motor_price" name="motor_price" type="number" class="mt-1 block w-full"
-                :value="old('motor_price')" autocomplete="" />
+                :value="old('motor_price', $sales->motor_price)" autocomplete="" />
             <x-input-error :messages="$errors->get('motor_price')" class="mt-2" />
         </div>
 
         <div class="mb-4">
             <x-input-label for="motor_dp" :value="__('DP')" />
             <x-text-input id="motor_dp" name="motor_dp" type="number" class="mt-1 block w-full"
-                :value="old('motor_dp')" autocomplete="" />
+                :value="old('motor_dp', $sales->motor_dp)" autocomplete="" />
             <x-input-error :messages="$errors->get('motor_dp')" class="mt-2" />
         </div>
 
@@ -185,16 +177,9 @@ enctype="multipart/form-data">
         </div>
 
         <div class="mb-4">
-            <x-input-label for="motor_commission_fee" :value="__('Commission Fee')" />
-            <x-text-input id="motor_commission_fee" name="motor_commission_fee" type="number" class="mt-1 block w-full"
-                :value="old('motor_commission_fee')" autocomplete="" />
-            <x-input-error :messages="$errors->get('motor_commission_fee')" class="mt-2" />
-        </div>
-
-        <div class="mb-4">
             <x-input-label for="motor_installment_amount" :value="__('Installment Amount')" />
             <x-text-input id="motor_installment_amount" name="motor_installment_amount" type="number" class="mt-1 block w-full"
-                :value="old('motor_installment_amount')" autocomplete="" />
+                :value="old('motor_installment_amount', $sales->motor_installment_amount)" autocomplete="" />
             <x-input-error :messages="$errors->get('motor_installment_amount')" class="mt-2" />
         </div>
 

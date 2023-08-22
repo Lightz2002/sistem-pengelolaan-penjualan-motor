@@ -62,6 +62,21 @@ class Sales extends Model
             ->orWhere('sales_code', 'like', '%' . $search . '%');
     }
 
+    public function scopeFilterByCredit($query, string $search)
+    {
+        return $query ->where('sales_status', 'accepted')
+            ->where(function ($query) use ($search) {
+                $query->where('sales_code', 'like', '%' . $search . '%')
+                ->orWhere('sales_date', 'like', '%' . $search . '%')
+                ->orWhere('customer_name', 'like', '%' . $search . '%')
+                ->orWhere('motor_plate_number', 'like', '%' . $search . '%')
+                ->orWhereHas('dealer', function ($query) use($search) {
+                    $query->where('name', 'like', '%' . $search . '%');
+                });
+            })
+            ;
+    }
+
     /* Relations */
     public function surveyor(): BelongsTo
     {

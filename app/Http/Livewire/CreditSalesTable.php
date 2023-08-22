@@ -19,7 +19,7 @@ class CreditSalesTable extends Table
 
     public function query(): Builder
     {
-        return Sales::filterByCustomer($this->search);
+        return Sales::filterByCredit($this->search);
     }
 
     public function columns(): array

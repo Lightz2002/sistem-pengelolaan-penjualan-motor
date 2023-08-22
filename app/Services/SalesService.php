@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreAdminDataSalesRequest;
 use App\Http\Requests\StoreSurveyorSalesRequest;
+use App\Http\Requests\UpdateCreditSalesRequest;
 use App\Models\Sales;
 
 
@@ -42,5 +43,19 @@ class SalesService
     $sales->sales_surveyor = auth()->user()->id;
     $sales->save();
 
+  }
+
+  public function updateCreditSales(UpdateCreditSalesRequest $request, Sales $sales): void
+  {
+    /* update sales pnya data dgn request */
+    $sales->fill($request->validated());
+
+    $sales->save();
+  }
+
+  public function updateStatus(Sales $sales): void
+  {
+    $sales->sales_status = request()->sales_status;
+    $sales->save();
   }
 }
