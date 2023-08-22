@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Sales extends Model
 {
@@ -59,6 +60,17 @@ class Sales extends Model
             ->orWhere('customer_full_address', 'like', '%' . $search . '%')
             ->orWhere('motor_plate_number', 'like', '%' . $search . '%')
             ->orWhere('sales_code', 'like', '%' . $search . '%');
+    }
+
+    /* Relations */
+    public function surveyor(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'sales_surveyor');
+    }
+
+    public function dealer(): BelongsTo
+    {
+        return $this->belongsTo(Dealer::class);
     }
 
     /* Essential methods */

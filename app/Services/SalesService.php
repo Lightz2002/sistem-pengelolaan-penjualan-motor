@@ -39,6 +39,7 @@ class SalesService
     /* Upload photos */
     $this->fileService->multiUpload(['motor_front_photo', 'motor_back_photo', 'motor_right_photo', 'motor_left_photo', 'house_photo', 'customer_photo'], $sales);
 
+    $sales->sales_surveyor = auth()->user()->id;
     $sales->save();
 
   }

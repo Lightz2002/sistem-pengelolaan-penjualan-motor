@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Dealer;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -38,6 +39,12 @@ return new class extends Migration
       $table->string('customer_photo', 50)->nullable(true);
       $table->string('motor_type', 20)->nullable(true);
       $table->string('motor_plate_number', 10)->nullable(true);
+      $table->string('motor_frame_number', 20)->nullable(true);
+      $table->string('motor_engine_number', 20)->nullable(true);
+      $table->string('motor_assemble_year', 20)->nullable(true);
+      $table->string('motor_color', 15)->nullable(true);
+      $table->string('sales_person', 30)->nullable(true);
+      $table->string('sales_collector', 30)->nullable(true);
       $table->foreignIdFor(User::class, 'sales_surveyor')->nullable(true);
       $table->decimal('motor_dp', 10, 2)->nullable(true);
       $table->decimal('motor_price', 10, 2)->nullable(true);
@@ -46,6 +53,8 @@ return new class extends Migration
       $table->string('motor_right_photo', 80)->nullable(true);
       $table->string('motor_left_photo', 80)->nullable(true);
       $table->decimal('motor_administration_fee', 10, 2)->default(150000);
+      $table->decimal('motor_installment_amount', 10, 2)->default(0);
+      $table->decimal('motor_commission_fee', 10, 2)->default(0);
       $table->string('sales_type', 20)->nullable(true);
       $table->foreignIdFor(Dealer::class, 'dealer_id')->nullable(true);
       $table->string('guarantor_name', 50)->nullable(true);

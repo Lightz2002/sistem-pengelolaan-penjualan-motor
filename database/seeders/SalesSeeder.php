@@ -21,6 +21,7 @@ class SalesSeeder extends Seeder
                 'customer_family_card_no' => '2172013009020002',
                 'customer_identity_card_no' => '2172013009020003',
                 'customer_full_address' => 'Victory Residence blok f.15',
+                'sales_surveyor' => 2,
                 'motor_type' => 'Scoopy',
                 'motor_plate_number' => '2079',
                 'motor_dp' => 5000000,

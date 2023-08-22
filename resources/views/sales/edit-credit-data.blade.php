@@ -6,6 +6,6 @@
   </x-slot>
 
   <div class="py-12">
-      @include('sales.partials.admin-data.create-sales-form')
+      @include('sales.partials.cashier.edit-sales-form')
   </div>
 </x-app-layout>

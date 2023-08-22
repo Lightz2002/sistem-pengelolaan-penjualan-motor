@@ -29,10 +29,9 @@ class CreditSalesTable extends Table
             Column::make('sales_date', 'Date'),
             Column::make('customer_name', 'Name'),
             Column::make('motor_plate_number', 'Plate Number'),
-            Column::make('dealer.name', 'Dealer'),
-            // Column::make('sales_status', 'Status')->component('columns.customers.status'),
+            Column::make('dealer', 'Dealer')->component('columns.cashiers.dealer'),
             Column::make('created_at', 'Created At')->component('columns.common.human-diff'),
-            // Column::make('action', 'Actions')->component($this->getActionColumn())
+            Column::make('action', 'Actions')->component('columns.cashiers.action')
         ];
     }
 
