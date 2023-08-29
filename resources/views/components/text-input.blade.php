@@ -1,22 +1,19 @@
-@props(['disabled' => false, 'checked' => false])
-@php $type = $attributes->get('type'); @endphp
+@props(['readonly' => false, 'checked' => false])
+
+@php
+    $type = $attributes->get('type');
+    $inputClass = 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm';
+    if ($readonly) {
+        $inputClass .= ' bg-gray-200 text-gray-500';
+    }
+@endphp
 
 @if ($type === 'textarea')
-    <textarea
-        {{ $attributes->except('type')->merge([
-            'class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm',
-        ]) }}>
-        {{ $slot }}    
+    <textarea {{ $attributes->except('type')->merge(['class' => $inputClass]) }}>
+        {{ $slot }}
     </textarea>
 @elseif ($type === 'radio')
-    <input {{ $disabled ? 'disabled' : '' }} {{ $checked ? 'checked' : '' }} {!! $attributes->merge([
-        'class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm',
-        'type' => 'text',
-    ]) !!}>
+    <input {{ $attributes->merge(['class' => $inputClass, 'type' => 'radio', 'readonly' => $readonly, 'checked' => $checked]) }}>
 @else
-    <input {{ $disabled ? 'disabled' : '' }} {!! $attributes->merge([
-        'class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm',
-        'type' => 'text',
-    ]) !!}>
+    <input {{ $attributes->merge(['class' => $inputClass, 'type' => 'text', 'readonly' => $readonly]) }}>
 @endif
-

@@ -24,6 +24,7 @@ class SalesSeeder extends Seeder
                 'sales_surveyor' => 2,
                 'motor_type' => 'Scoopy',
                 'motor_plate_number' => '2079',
+                'sales_type' => 'Reinstallment',
                 'motor_dp' => 5000000,
                 'motor_price' => 1900000,
                 'created_at' => now(),

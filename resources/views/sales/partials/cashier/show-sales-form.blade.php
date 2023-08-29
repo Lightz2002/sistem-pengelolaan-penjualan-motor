@@ -37,8 +37,8 @@ enctype="multipart/form-data">
         {{-- Sales Date --}}
         <div class="mb-4">
             <x-input-label for="sales_date" :value="__('Sales Date')" />
-            <x-text-input id="sales_date" name="sales_date" type="date"
-                class="mt-1 block w-full" :value="old('sales_date', $sales->sales_date)" />
+            <x-text-input disabled id="sales_date" name="sales_date" type="date"
+                class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('sales_date', $sales->sales_date)" />
             <x-input-error :messages="$errors->get('sales_date')" class="mt-2" />
         </div>
 
@@ -64,8 +64,8 @@ enctype="multipart/form-data">
 
         <div class="mb-4">
             <x-input-label for="sales_collector" :value="__('Collector')" />
-            <x-text-input id="sales_collector" name="sales_collector" type="text"
-                class="mt-1 block w-full" :value="old('sales_collector', $sales->sales_collector)" />
+            <x-text-input disabled id="sales_collector" name="sales_collector" type="text"
+                class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('sales_collector', $sales->sales_collector)" />
             <x-input-error :messages="$errors->get('sales_collector')" class="mt-2" />
         </div>
 
@@ -78,8 +78,8 @@ enctype="multipart/form-data">
 
         <div class="mb-4">
             <x-input-label for="sales_person" :value="__('Sales')" />
-            <x-text-input id="sales_person" name="sales_person" type="text"
-                class="mt-1 block w-full" :value="old('sales_person', $sales->sales_person)" />
+            <x-text-input disabled id="sales_person" name="sales_person" type="text"
+                class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('sales_person', $sales->sales_person)" />
             <x-input-error :messages="$errors->get('sales_person')" class="mt-2" />
         </div>
         </section>
@@ -98,48 +98,48 @@ enctype="multipart/form-data">
             {{-- Plate Number --}}
             <div class="mb-4">
                 <x-input-label for="motor_plate_number" :value="__('Plate Number')" />
-                <x-text-input id="motor_plate_number" name="motor_plate_number" type="text"
-                    class="mt-1 block w-full" :value="old('motor_plate_number', $sales->motor_plate_number)" />
+                <x-text-input disabled id="motor_plate_number" name="motor_plate_number" type="text"
+                    class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('motor_plate_number', $sales->motor_plate_number)" />
                 <x-input-error :messages="$errors->get('motor_plate_number')" class="mt-2" />
             </div>
 
             {{-- Motor Type --}}
             <div class="mb-4">
                 <x-input-label for="motor_type" :value="__('Motor Type')" />
-                <x-text-input id="motor_type" name="motor_type" type="text"
-                    class="mt-1 block w-full" :value="old('motor_type', $sales->motor_type)" />
+                <x-text-input disabled id="motor_type" name="motor_type" type="text"
+                    class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('motor_type', $sales->motor_type)" />
                 <x-input-error :messages="$errors->get('motor_type')" class="mt-2" />
             </div>
 
             {{-- Frame Number --}}
             <div class="mb-4">
                 <x-input-label for="motor_frame_number" :value="__('Frame Number')" />
-                <x-text-input id="motor_frame_number" name="motor_frame_number" type="text"
-                    class="mt-1 block w-full" :value="old('motor_frame_number', $sales->motor_frame_number)" />
+                <x-text-input disabled id="motor_frame_number" name="motor_frame_number" type="text"
+                    class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('motor_frame_number', $sales->motor_frame_number)" />
                 <x-input-error :messages="$errors->get('motor_frame_number')" class="mt-2" />
             </div>
 
             {{-- Engine Number --}}
             <div class="mb-4">
                 <x-input-label for="motor_engine_number" :value="__('Engine Number')" />
-                <x-text-input id="motor_engine_number" name="motor_engine_number" type="text"
-                    class="mt-1 block w-full" :value="old('motor_engine_number', $sales->motor_engine_number)" />
+                <x-text-input disabled id="motor_engine_number" name="motor_engine_number" type="text"
+                    class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('motor_engine_number', $sales->motor_engine_number)" />
                 <x-input-error :messages="$errors->get('motor_engine_number')" class="mt-2" />
             </div>
 
             {{-- Assemble Year --}}
             <div class="mb-4">
                 <x-input-label for="motor_assemble_year" :value="__('Assemble Year')" />
-                <x-text-input id="motor_assemble_year" name="motor_assemble_year" type="text"
-                    class="mt-1 block w-full" :value="old('motor_assemble_year', $sales->motor_assemble_year)" />
+                <x-text-input disabled id="motor_assemble_year" name="motor_assemble_year" type="text"
+                    class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('motor_assemble_year', $sales->motor_assemble_year)" />
                 <x-input-error :messages="$errors->get('motor_assemble_year')" class="mt-2" />
             </div>
 
             {{-- Color --}}
             <div class="mb-4">
                 <x-input-label for="motor_color" :value="__('Color')" />
-                <x-text-input id="motor_color" name="motor_color" type="text"
-                    class="mt-1 block w-full" :value="old('motor_color', $sales->motor_color)" />
+                <x-text-input disabled id="motor_color" name="motor_color" type="text"
+                    class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('motor_color', $sales->motor_color)" />
                 <x-input-error :messages="$errors->get('motor_color')" class="mt-2" />
             </div>
         </section>
@@ -158,14 +158,14 @@ enctype="multipart/form-data">
         {{-- Motor Price --}}
         <div class="mb-4">
             <x-input-label for="motor_price" :value="__('Price')" />
-            <x-text-input id="motor_price" name="motor_price" type="number" class="mt-1 block w-full"
+            <x-text-input disabled id="motor_price" name="motor_price" type="number" class="mt-1 block w-full bg-gray-200 text-gray-500"
                 :value="old('motor_price', $sales->motor_price)" autocomplete="" />
             <x-input-error :messages="$errors->get('motor_price')" class="mt-2" />
         </div>
 
         <div class="mb-4">
             <x-input-label for="motor_dp" :value="__('DP')" />
-            <x-text-input id="motor_dp" name="motor_dp" type="number" class="mt-1 block w-full"
+            <x-text-input disabled id="motor_dp" name="motor_dp" type="number" class="mt-1 block w-full bg-gray-200 text-gray-500"
                 :value="old('motor_dp', $sales->motor_dp)" autocomplete="" />
             <x-input-error :messages="$errors->get('motor_dp')" class="mt-2" />
         </div>
@@ -178,35 +178,37 @@ enctype="multipart/form-data">
 
         <div class="mb-4">
             <x-input-label for="motor_installment_amount" :value="__('Installment Amount')" />
-            <x-text-input required id="motor_installment_amount" name="motor_installment_amount" type="number" class="mt-1 block w-full"
+            <x-text-input disabled id="motor_installment_amount" name="motor_installment_amount" type="number" class="mt-1 block w-full bg-gray-200 text-gray-500"
                 :value="old('motor_installment_amount', $sales->motor_installment_amount)" autocomplete="" />
             <x-input-error :messages="$errors->get('motor_installment_amount')" class="mt-2" />
         </div>
 
         <div class="mb-4">
             <x-input-label for="motor_installment_period" :value="__('Installment Period')" />
-            <x-text-input required id="motor_installment_period" name="motor_installment_period" type="text"
-                class="mt-1 block w-full" :value="old('motor_installment_period', $sales->motor_installment_period)" />
+            <x-text-input disabled id="motor_installment_period" name="motor_installment_period" type="text"
+                class="mt-1 block w-full bg-gray-200 text-gray-500" :value="old('motor_installment_period', $sales->motor_installment_period)" />
             <x-input-error :messages="$errors->get('motor_installment_period')" class="mt-2" />
         </div>
 
         <div class="mb-4">
             <x-input-label for="dealer_id" :value="__('Dealer')" />
-            <x-select name="dealer_id" :options="$dealers" :selected="old('dealer_id', $dealers[0]->id)" />
+            <x-select disabled class="bg-gray-200 text-gray-500" name="dealer_id" :options="$dealers" :selected="old('dealer_id', $dealers[0]->id)" />
             <x-input-error :messages="$errors->get('dealer_id')" class="mt-2" />
         </div>
         </section>
     </div>
-    <div class="mt-6 flex justify-end">
-        <x-secondary-button type="redirect" href="/sales">
-            {{ __('Back') }}
-        </x-secondary-button>
+    
+</div>
 
-        <x-primary-button class="ml-3">
-            {{ __('Save') }}
-        </x-primary-button>
+{{-- Installment History--}}
+<div class="col-span-2 mt-4 sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
+        <h1 class="mb-6 text-2xl font-bold">Installment History</h1>
+
+        <livewire:sales-installment-table :sales="$sales" createUrl="{{ route('salesinstallment.create', ['sales' => $sales->id]) }}" />
     </div>
 </div>
+
 </form>
 
 

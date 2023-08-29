@@ -122,6 +122,18 @@ class SalesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function showCreditSales(Sales $sales)
+    {
+        return view('sales.show-credit-data', [
+            'dealers' => Dealer::all(),
+            'defaultInstallmentType' => 'Motor Installment',
+            'sales' => $sales
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
     public function editCreditSales(Sales $sales)
     {
         return view('sales.edit-credit-data', [

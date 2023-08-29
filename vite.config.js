@@ -11,4 +11,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    server: {
+        host: 'sistem-pengelolaan-penjualan-motor.test',
+    },
+
 });

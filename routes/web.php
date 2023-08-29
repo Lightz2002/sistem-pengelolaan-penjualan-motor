@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\SalesInstallmentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +50,15 @@ Route::middleware('auth')->group(function () {
     Route::put('/customers/rejectSurveyor/{sales}', [SalesController::class, 'rejectSurveyorSales'])->name('sales.rejectSurveyorSales');
 
     Route::get('/sales', [SalesController::class, 'listCreditSales'])->name('sales.listCreditSales');
-    Route::get('/sales/{sales}/editCreditData', [SalesController::class, 'editCreditSales'])->name('sales.editCreditSales');
+    Route::get('/sales/{sales}/showCreditSales', [SalesController::class, 'showCreditSales'])->name('sales.showCreditSales');
+    Route::get('/sales/{sales}/editCreditSales', [SalesController::class, 'editCreditSales'])->name('sales.editCreditSales');
     Route::put('/sales/{sales}/updateCreditSales', [SalesController::class, 'updateCreditSales'])->name('sales.updateCreditSales');
+
+    Route::get('/salesinstallment', [SalesInstallmentController::class, 'list'])->name('salesinstallment.list');
+    Route::get('/salesinstallment/{sales}/create', [SalesInstallmentController::class, 'create'])->name('salesinstallment.create');
+    Route::get('/salesinstallment/{salesinstallment}/edit', [SalesInstallmentController::class, 'edit'])->name('salesinstallment.edit');
+    Route::post('/salesinstallment/{salesinstallment}/update', [SalesInstallmentController::class, 'update'])->name('salesinstallment.update');
+    Route::post('/salesinstallment/{sales}', [SalesInstallmentController::class, 'store'])->name('salesinstallment.store');
 });
 
 require __DIR__ . '/auth.php';
