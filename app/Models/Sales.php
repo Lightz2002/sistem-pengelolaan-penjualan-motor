@@ -56,15 +56,25 @@ class Sales extends Model
 
     public function scopeFilterByCustomer($query, string $search)
     {
-        return $query->where('customer_name', 'like', '%' . $search . '%')
-            ->orWhere('customer_full_address', 'like', '%' . $search . '%')
-            ->orWhere('motor_plate_number', 'like', '%' . $search . '%')
-            ->orWhere('sales_code', 'like', '%' . $search . '%');
+        $query = $query->where(function ($query) use ($search) {
+            $query->where('customer_name', 'like', '%' . $search . '%')
+                ->orWhere('customer_full_address', 'like', '%' . $search . '%')
+                ->orWhere('motor_plate_number', 'like', '%' . $search . '%')
+                ->orWhere('sales_code', 'like', '%' . $search . '%');
+        });
+
+        if (request()->route('sales')) $query->where('id', request()->route('sales')->id);
+        if (auth()->user()->hasRole('cashier')) $query->whereNot('sales_status', 'pending');
+        
+
+        return $query;
     }
 
     public function scopeFilterByCredit($query, string $search)
     {
         return $query ->where('sales_status', 'accepted')
+            ->where('is_finish_edited', false)
+            ->where('sales_type', '!=', 'cash')
             ->where(function ($query) use ($search) {
                 $query->where('sales_code', 'like', '%' . $search . '%')
                 ->orWhere('sales_date', 'like', '%' . $search . '%')

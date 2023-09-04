@@ -19,7 +19,7 @@ class UpdateCreditSalesRequest extends FormRequest
       'motor_type' => ['string', 'max:50'],
       'motor_frame_number' => ['string', 'max:50', 'required'],
       'motor_engine_number' => ['string', 'max:50', 'required'],
-      'motor_assemble_year' => ['string', 'max:50', 'required'],
+      'motor_assemble_year' => ['date_format:Y', 'required'],
       'motor_color' => ['string', 'max:50'],
       'sales_collector' => ['string', 'max:50', 'required'],
       'sales_person' => ['string', 'max:50', 'required'],

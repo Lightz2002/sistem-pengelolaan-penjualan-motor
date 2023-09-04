@@ -31,7 +31,7 @@
                     <x-input-label for="customer_age" :value="__('Age')" />
                     <x-text-input id="customer_age" name="customer_age" type="number" class="mt-1 block w-full"
                         :value="old('customer_age')" />
-                    <x-input-error :messages="$errors->get('customer_age', $sales->age)" class="mt-2" />
+                    <x-input-error :messages="$errors->get('customer_age', $sales->customer_age)" class="mt-2" />
                 </div>
 
                 {{-- Gender --}}
@@ -120,8 +120,8 @@
                 <div class="mb-4">
                     <x-input-label for="customer_workplace_position" :value="__('Workplace Position')" />
                     <x-text-input id="customer_workplace_position" name="customer_workplace_position" type="text"
-                        class="mt-1 block w-full" :value="old('customer_workplace_position')" />
-                    <x-input-error :messages="$errors->get('customer_workplace_position', $sales->customer_workplace_position)" class="mt-2" />
+                        class="mt-1 block w-full" :value="old('customer_workplace_position', $sales->customer_workplace_position)" />
+                    <x-input-error :messages="$errors->get('customer_workplace_position')" class="mt-2" />
                 </div>
             </section>
         </div>

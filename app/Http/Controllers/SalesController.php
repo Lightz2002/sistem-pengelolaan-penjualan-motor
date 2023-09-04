@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAdminDataSalesRequest;
+use App\Http\Requests\StoreCashSalesRequest;
 use App\Http\Requests\UpdateCreditSalesRequest;
 use App\Models\Sales;
 use App\Http\Requests\StoreSurveyorSalesRequest;
 use App\Http\Requests\UpdateSalesRequest;
 use App\Models\Dealer;
+use App\Models\User;
 use App\Services\SalesService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -23,20 +25,13 @@ class SalesController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function createAdminDataSales()
     {
         return view('sales.create-admin-data', [
             'dealers' => Dealer::all(),
+            'surveyors' => User::role('surveyor')->get(),
             'defaultInstallmentType' => 'Motor Installment'
         ]);
     }
@@ -108,6 +103,32 @@ class SalesController extends Controller
         ]);
     }
 
+    public function showCashSales(Sales $sales)
+    {
+        return view('cashsales.show-cash-sales', [
+            'sales' => $sales
+        ]);
+    }
+
+    public function createCashSales()
+    {
+        $sales = new Sales();
+        $sales->sales_type = 'cash';
+        $defaultSalesCode = $sales->generateSalesCode();
+
+        return view('cashsales.create-cash-sales', [
+            'defaultSalesCode' => $defaultSalesCode
+        ]);
+    }
+
+    public function storeCashSales(StoreCashSalesRequest $request): RedirectResponse
+    {
+        $this->salesService->saveCashSales($request);
+        session()->flash('message', 'Sales Created Successfully');
+        return Redirect::to('/customers');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -150,19 +171,9 @@ class SalesController extends Controller
         return Redirect::to('/sales');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateSalesRequest $request, Sales $sales)
+    public function print(Sales $sales)
     {
-        //
+        return $this->salesService->print($sales);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Sales $sales)
-    {
-        //
-    }
 }

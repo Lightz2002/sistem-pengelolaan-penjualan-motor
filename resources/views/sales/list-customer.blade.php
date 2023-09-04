@@ -21,5 +21,87 @@
         </div>
 
     </div>
+    
+<script>
+
+    const acceptButtons = document.querySelectorAll('.show-accept-alert');
+    const rejectButtons = document.querySelectorAll('.show-reject-alert');
+
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+    acceptButtons.forEach(button => {
+        const salesId = button.getAttribute('data-sales-id');
+        button.addEventListener('click', function () {
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, accept!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/customers/${salesId}/status`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({ sales_status: 'accepted' }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        Swal.fire(
+                        'Success',
+                        data.message,
+                        'success'
+                        )
+                    })
+                    .catch(error => {
+                        Swal.fire('Error', 'An error occurred', 'error');
+                    });
+            }
+            })
+        });
+    })
+
+    rejectButtons.forEach(button => {
+        const salesId = button.getAttribute('data-sales-id');
+        button.addEventListener('click', function () {
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reject!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/customers/${salesId}/status`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({ sales_status: 'rejected' }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        Swal.fire(
+                        'Success',
+                        data.message,
+                        'success'
+                        )
+                    })
+                    .catch(error => {
+                        Swal.fire('Error', 'An error occurred', 'error');
+                    });
+            }
+            })
+        });
+    });
+</script>
 </x-app-layout>
 

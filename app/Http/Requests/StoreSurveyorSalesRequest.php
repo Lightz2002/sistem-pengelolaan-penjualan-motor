@@ -40,7 +40,8 @@ class StoreSurveyorSalesRequest extends FormRequest
       'motor_front_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
       'motor_back_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
       'house_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
-      'customer_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512']
+      'customer_photo' => ['file', 'mimes:jpeg,png,jpg', 'max:512'],
+      'note' => ['string'],
     ];
   }
 }

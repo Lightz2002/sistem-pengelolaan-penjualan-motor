@@ -38,8 +38,8 @@ class CustomersTable extends Table
     private function getCreateUrl()
     {
 
-        if (auth()->user()->hasRole('surveyor')) return '';
-        return '/customers/createAdminData';
+        if (auth()->user()->hasRole('admin data')) return '/customers/createAdminData';
+        return '';
     }
 
     private function getActionColumn()

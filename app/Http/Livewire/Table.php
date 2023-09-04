@@ -11,7 +11,7 @@ abstract class Table extends Component
     use WithPagination;
 
     public $page = 1;
-    public $perPage = 2;
+    public $perPage = 10;
     public $search = '';
     public $createUrl = '';
 

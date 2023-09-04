@@ -195,6 +195,15 @@ enctype="multipart/form-data">
             <x-select disabled class="bg-gray-200 text-gray-500" name="dealer_id" :options="$dealers" :selected="old('dealer_id', $dealers[0]->id)" />
             <x-input-error :messages="$errors->get('dealer_id')" class="mt-2" />
         </div>
+
+        <div class="mb-4">
+            <x-input-label for="note" :value="__('Note')" />
+            <x-text-input readonly id="note" name="note" type="textarea"
+                class="mt-1 block w-full" :value="old('note', $sales->note)" autocomplete="note">
+                {{ old('note', $sales->note) }}
+            </x-text-input>
+            <x-input-error :messages="$errors->get('note')" class="mt-2" />
+        </div>
         </section>
     </div>
     
@@ -205,7 +214,7 @@ enctype="multipart/form-data">
     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
         <h1 class="mb-6 text-2xl font-bold">Installment History</h1>
 
-        <livewire:sales-installment-table :sales="$sales" createUrl="{{ route('salesinstallment.create', ['sales' => $sales->id]) }}" />
+        <livewire:sales-installment-table :sales="$sales" createUrl="{{ auth()->user()->hasRole('cashier') ?route('salesinstallment.create', ['sales' => $sales->id]) : '' }}" />
     </div>
 </div>
 

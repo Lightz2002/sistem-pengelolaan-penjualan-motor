@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\DB;
 
 class SalesInstallment extends Model
 {
@@ -42,7 +43,7 @@ class SalesInstallment extends Model
     {
         $query = $query->join('sales', 'sales.id', '=', 'sales_installments.sales_id')
                 ->leftJoin('dealers', 'dealers.id', '=', 'sales.dealer_id')
-                ->select('sales_installments.*', 'sales.customer_name', 'sales.customer_address', 'sales.motor_plate_number', 'sales.sales_code');
+                ->select(DB::raw('sales_installments.*, FORMAT(sales_installments.installment_amount, 0) formatted_installment_amount, FORMAT(sales_installments.fine, 0) formatted_fine, FORMAT(sales_installments.discount_amount, 0) formatted_discount_amount, FORMAT(sales_installments.total_payment, 0) formatted_total_payment, sales.customer_name, sales.customer_address, sales.motor_plate_number, sales.sales_code'));
 
         if ($salesId !== 'all') return $query->where('sales.id', $salesId)
             ->where(function ($query) use ($search) {

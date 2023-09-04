@@ -104,6 +104,12 @@
                     <x-select name="dealer_id" :options="$dealers" :selected="old('dealer_id', $dealers[0]->id)" />
                     <x-input-error :messages="$errors->get('dealer_id')" class="mt-2" />
                 </div>
+
+                <div class="mb-4">
+                    <x-input-label for="sales_surveyor" :value="__('Surveyor')" />
+                    <x-select name="sales_surveyor" :options="$surveyors" :selected="old('sales_surveyor', $surveyors[0]->id)" />
+                    <x-input-error :messages="$errors->get('sales_surveyor')" class="mt-2" />
+                </div>
             </section>
         </div>
         <div class="mt-6 flex justify-end">

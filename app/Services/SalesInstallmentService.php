@@ -49,6 +49,10 @@ class SalesInstallmentService
   }
 
 
+  public function getAll() {
+    return SalesInstallment::all();
+  }
+
   public function getHelperData($sales) {
     $paymentPeriod = $this->getPeriodNo($sales->id);
     $dueDate = $this->getDueDateByPeriod($sales, $paymentPeriod);

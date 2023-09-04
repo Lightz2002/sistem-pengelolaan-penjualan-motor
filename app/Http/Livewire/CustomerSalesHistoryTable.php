@@ -23,7 +23,7 @@ class CustomerSalesHistoryTable extends Table
             Column::make('sales_date', 'Sales Date'),
             Column::make('sales_code', 'Name'),
             Column::make('motor_plate_number', 'Plate Number'),
-            Column::make('action', 'Actions')->component('columns.customers.action')
+            Column::make('action', 'Actions')->component('columns.customers.detail-action')
         ];
     }
 }

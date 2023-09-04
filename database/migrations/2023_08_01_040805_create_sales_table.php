@@ -18,6 +18,7 @@ return new class extends Migration
       $table->string('sales_code', 20)->nullable();
       $table->date('sales_date')->nullable();
       $table->boolean('sales_is_deleted')->default(false);
+      $table->boolean('is_finish_edited')->default(false);
       $table->string('sales_status', 10)->nullable();
       $table->string('customer_name', 50)->nullable();
       $table->string('customer_nickname', 20)->nullable();
@@ -27,6 +28,7 @@ return new class extends Migration
       $table->string('customer_status', 12)->nullable();
       $table->bigInteger('customer_identity_card_no')->nullable();
       $table->bigInteger('customer_family_card_no')->nullable();
+      $table->bigInteger('customer_phone_no')->nullable();
       $table->longText('customer_full_address')->nullable();
       $table->longText('customer_workplace_address')->nullable();
       $table->string('customer_workplace_name', 100)->nullable();
@@ -64,6 +66,7 @@ return new class extends Migration
       $table->bigInteger('guarantor_identity_no')->nullable();
       $table->string('guarantor_occupation', 50)->nullable();
       $table->longText('guarantor_workplace_address')->nullable();
+      $table->longText('note')->nullable();
       $table->string('house_photo', 80)->nullable();
       $table->timestamps();
     });

@@ -53,9 +53,10 @@
 
 <script>
     const alert = document.querySelector('.alert');
-    setTimeout(() => {
-        alert.classList.add('hidden');
-    }, 2000);
-    console.log('1');
+    if (alert) {
+        setTimeout(() => {
+            alert.classList.add('hidden');
+        }, 2000);
+    }
 </script>
 

@@ -26,24 +26,30 @@ class SalesInstallmentTable extends Table
 
     public function columns(): array
     {
-        if ($this->sales) return [
+        $columns = [];
+
+        if ($this->sales) $columns = [
             Column::make('code', 'Code'),
             Column::make('period_no', 'Period'),
             Column::make('receipt_date', 'Receipt Date'),
-            Column::make('installment_amount', 'Installment'),
+            Column::make('formatted_installment_amount', 'Installment'),
             Column::make('dealer_id', 'Dealer')->component('columns.cashiers.sales_installment_dealer'),
-            Column::make('fine', 'Fine'),
-            Column::make('discount_amount', 'Discount'),
-            Column::make('total_payment', 'Total'),
-            Column::make('action', 'Actions')->component('columns.cashiers.sales_installment_action'),
+            Column::make('formatted_fine', 'Fine'),
+            Column::make('formatted_discount_amount', 'Discount'),
+            Column::make('formatted_total_payment', 'Total'),
         ];
 
-        return [
+        if ($this->sales && auth()->user()->hasRole('cashier')) $columns[] = Column::make('action', 'Actions')->component('columns.cashiers.sales_installment_action');
+
+        if (!$this->sales) $columns = [
             Column::make('customer_name', 'Customer'),
             Column::make('customer_address', 'Address'),
             Column::make('motor_plate_number', 'Plate Number'),
             Column::make('sales_code', 'Sales Code'),
             Column::make('action', 'Actions')->component('columns.cashiers.sales_installment_action'),
         ];
+
+        return $columns;
     }
+
 }

@@ -9,7 +9,7 @@
 @endphp
 
 @if ($type === 'textarea')
-    <textarea {{ $attributes->except('type')->merge(['class' => $inputClass]) }}>
+    <textarea {{ $attributes->except('type')->merge(['class' => $inputClass, 'readonly' => $readonly]) }}>
         {{ $slot }}
     </textarea>
 @elseif ($type === 'radio')
